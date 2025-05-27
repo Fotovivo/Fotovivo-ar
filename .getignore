@@ -1,0 +1,17 @@
+# Общие системные файлы
+.DS_Store
+dist/
+.env
+
+# Зависимости Node.js
+node_modules/
+
+# Фронтенд (React)
+frontend/node_modules/
+frontend/.cache/
+frontend/.env
+frontend/build/
+
+# Бэкенд (Node.js)
+backend/node_modules/
+backend/.env
