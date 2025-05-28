@@ -22,7 +22,15 @@ const corsOptions = {
 };
 app.use(cors(corsOptions));
 
-// 3. Логирование для отладки (можно удалить после тестов)
+// 3. Дополнительные CORS-заголовки
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
+  res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+  next();
+});
+
+// 4. Логирование для отладки
 app.use((req, res, next) => {
   console.log(`[${new Date().toISOString()}] ${req.method} ${req.path}`);
   console.log('Origin:', req.headers.origin);

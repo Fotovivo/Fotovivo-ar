@@ -16,7 +16,7 @@ function App() {
     
     // Проверка MIME-типа
     const validImageTypes = ['image/jpeg', 'image/png', 'image/webp'];
-    const validVideoTypes = ['video/mp4', 'video/webm'];
+    const validVideoTypes = ['video/mp4', 'video/quicktime', 'video/webm'];
     
     if (name === 'photo' && !validImageTypes.includes(file.type)) {
       alert('Поддерживаются только JPG, PNG и WebP изображения');
@@ -24,7 +24,7 @@ function App() {
     }
     
     if (name === 'video' && !validVideoTypes.includes(file.type)) {
-      alert('Поддерживаются только MP4 и WebM видео');
+      alert('Поддерживаются только MP4, MOV и WebM видео');
       return;
     }
     
@@ -53,6 +53,7 @@ function App() {
     onDrop: files => onDrop(files, 'video'),
     accept: {
       'video/mp4': ['.mp4'],
+      'video/quicktime': ['.mov'],
       'video/webm': ['.webm']
     },
     maxFiles: 1
@@ -112,7 +113,7 @@ function App() {
           {files.video ? (
             <video src={URL.createObjectURL(files.video)} controls />
           ) : (
-            <p>Перетащите видео (MP4, WebM, макс. 50MB)</p>
+            <p>Перетащите видео (MP4, MOV, WebM, макс. 50MB)</p>
           )}
         </div>
       </div>
